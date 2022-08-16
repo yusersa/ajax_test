@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery/jQuery.min.js"></script>
+</head>
+<body>
+    <button id="btn">发起jsonp数据请求</button>
+    <script>
+        //发起jsonp请求时 动态向header标签中append一个script标签
+        $(function(){
+            $('#btn').on('click',function(){
+                $.ajax({
+                    url:'http://ajax.frontend.itheima.net:3006/api/jsonp?address=北京&location=顺义',
+                    dataType:'jsonp',
+                    jsonpCallback:'abd',
+                    success:function(res){
+                        //jsonp请求成功时 动态从header标签中移除刚刚append进去的script标签
+                        console.log(res);
+                    }   
+                })
+            })
+        })
+    </script>
+</body>
+</html>
